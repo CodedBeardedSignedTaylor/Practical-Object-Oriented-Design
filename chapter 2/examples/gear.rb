@@ -21,10 +21,16 @@ class Gear
     chainring / cog.to_f
   end
 
-  #
+  # This section now with refactoring and extraction!
+
   def gear_inches
     # We're showing how the tire goies around the rim twice
     # in estimating diameter
-    ratio * (rim + (tire * 2))
+    ratio * diameter
+  end
+
+
+  def diameter
+    rim + (tire * 2)
   end
 end
