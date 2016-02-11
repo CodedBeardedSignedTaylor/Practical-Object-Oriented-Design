@@ -5,18 +5,24 @@ class ObscuringReferences
     @data = data
   end
 
-
-  # Ok, this isn't good. Why?
+  # Now things have changed.
   #
-  # Its dependent on a certain strucutre of input data. Anything different from
-  # the norm (at the bottom) will basically blow this thing to pieces.
-  #
-  # We're forcing diameters to find where the rims and tires in the array.
+  # We're looking at something that references an actual object (or Struct)
+  # with data attached to it. We know that a wheel can have a rim or a tire.
+  # It will forever be consistent in that manner.
   def diameters
-    # An index of 0 = rim
-    # An index of 1 = tire
+    wheels.collect { |wheel|
+      wheel.rim + (wheel.tire * 2)
+    }
+  end
+
+  Wheel = Struct.new(:rim, :tire)
+
+  # Here's a new spin on our old diameters logic.
+  # Please note that we're taking in random data and creating objects.
+  def wheelify(data)
     data.collect { |cell|
-      cell[0] + (cell[1] * 2)
+      Wheel.new(cell[0], cell[1])
     }
   end
 end
