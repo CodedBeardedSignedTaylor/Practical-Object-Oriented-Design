@@ -22,40 +22,51 @@ class Clock
   # Ticks our clock for a specified number of turns.
   # Our clock tick in real time according to the clock interval.
   def wind_up(turns)
+    "Starting time: " + current time
     turns.times do
       sleep(@interval)
       tick
     end
+    "Finsh Time: " + current_time
   end
 
-  # This is like a calzone full of functionality. Better get the dipping sauce.
-  # Advances the clock a second. In certain cases, the minute or hour values
-  # increment.
-
-  # This thing is a mess. So, let's start to clean it up.
+  # Tick will now increment the second value.
   def tick
     @second += 1
-
-    # Why do we need this nested stuff?
-    # Could this be extracted into a helper method?
-    if @second == 60
-      @minute += 1
-      puts "One minute has passed!"
-      @second = 0
-
-      # Again, why do we need this nested stuff?
-      # Could this be extracted into a helper method?
-      if @minute == 60
-        @hour += 1
-        puts "One hour has passed."
-        @minute = 0
-      end
-    end
-
-    puts "Tick."
+    need_tock?
   end
 
-  # Not bad. Not bad at all. 
+  # If the second value == 60, then it will commit a tock
+  def need_tock?
+    if @second == 60
+      @second = 0
+      tock
+    end
+  end
+
+  # Increments the minute value.
+  def tock
+    @minute += 1
+  end
+
+  # If minute value == 60, then it will commit a ticktock
+  def need_tick_tock?
+    if @minute == 60
+      @minute = 0
+      tick_tock
+    end
+  end
+
+  # Advances the hour.
+  # Minutes are set to 0
+  # Seconds are set to 0.
+  def tick_tock
+    @hour += 1
+    @minute = 0
+    @second = 0
+  end
+
+  # Not bad. Not bad at all.
   def current_time
     "#{hour}:#{minute}:#{second}"
   end
