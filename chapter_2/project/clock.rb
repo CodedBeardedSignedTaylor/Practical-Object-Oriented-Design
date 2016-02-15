@@ -1,4 +1,4 @@
-# Round 1!
+# Round 2!
 
 # So, we have our Clock class.
 # Now we're going to try to stuff it with as much functionality as possible.
