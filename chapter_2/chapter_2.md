@@ -25,3 +25,25 @@ We briefly talk about this idea of TRUE code. Let's talk about what it involves:
 * Exemplary - The code itself should encourage those who change it to perpetuate these qualities.
 
 Not much to say on this right now. Just think its interesting. Transparent code really sticks out to me initially. The examples show this as well.
+
+## Single Responsibility Classes
+
+> A class should do the smallest possible useful thing; that is, it should have
+> a single responsibility.
+
+This is certainly mentioned a lot in overviews of OO programming, but how many
+times do we start to exercise those muscles? Often times, "it works" is all
+we can manage when making something new. Single responsibility has a lot more
+power than we think.
+
+> Applications that are easy to change consist of classes that are easy to reuse.
+
+Again, basic OO stuff. Still noteworthy.
+
+> Duplicated code leads to additional maintenance and increases bugs.
+
+> Because change is inevitable coding in a changeable style has big future payoffs.
+
+Starting to get more practical here. Organizing our code well does more than
+makes OO purists happy. Good OO practices lead to developer (and eventually
+client) satisfaction. 
