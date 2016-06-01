@@ -103,3 +103,32 @@ an object knows *just enough*. Yet, how much is enough?
 We want to be aware of what dependencies are and how they function. We don't
 want to bloat objects with lots of dependencies and nesting. They'll become nightmares
 to maintain and improve.
+
+> If you are mindful of dependencies and develop a habit of routinely injecting them,
+> your classes will naturally be loosely coupled. If you ignore  this issues and let
+> the class references fall where they amy, you application will be more like a big
+> woven mat rather than a set of independent objects.
+
+### Remove Argument-Order Dependencies
+
+> When you send a message that requires arguments, you, as the sender, cannot
+> have knowledge of those arguments. This dependency is unavoidable.
+
+> Many method signatures not only require arguments, but they also require that
+> those arguments be passed in a specific, fixed order.
+
+```ruby
+class Gear
+  attr_reader :chainring, :cog, :wheel
+
+  def initialize(args)
+    @chainring = args.fetch(:chainring, 40)
+    @cog = args.fetch(:cog, 18)
+    @wheel = args[:wheel]
+  end
+
+  ...
+end  
+```
+
+## Managing Dependency Direction 
