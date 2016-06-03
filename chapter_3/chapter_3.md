@@ -109,13 +109,29 @@ to maintain and improve.
 > the class references fall where they amy, you application will be more like a big
 > woven mat rather than a set of independent objects.
 
+I think the biggest problem is that we often think in terms of what solves the
+problem as opposed to what actually works best. In the heat of "shipping" or
+"delievering" a feature, I often don't think about how the dependency flow is
+structured.
+
+We often push that role off to software design. While it is absolutely the job
+of software designers to handle that stuff initially, it is the job of the
+maintainers to actually carry on that spirit of design. That is, if the
+design *actually* follows that philosphy.
+
 ### Remove Argument-Order Dependencies
 
 > When you send a message that requires arguments, you, as the sender, cannot
 > have knowledge of those arguments. This dependency is unavoidable.
 
+This starts to go into the idea that messages are dependencies.
+
 > Many method signatures not only require arguments, but they also require that
 > those arguments be passed in a specific, fixed order.
+
+This is the best and worst part about having "static" argument orders. You know
+how the arguments are going to be passed. However, in Ruby, we can't just
+override the initial method.
 
 ```ruby
 class Gear
@@ -131,4 +147,70 @@ class Gear
 end  
 ```
 
-## Managing Dependency Direction 
+## Managing Dependency Direction
+
+> Dependencies always have a direction.
+
+### Reverse Dependency Direction
+
+> [Sometimes] the  reversal of dependencies does no apparent harm.
+
+This is true. In the Gear and Wheel example, we find that reversing the dependencies
+does in fact not really have any long lasting harm.
+
+> Indeed, in an application that never changed, your choice would not matter.
+> However, your application will change and its that dynamic future where this
+> present decision has repercussions. The choices you make about the direction of
+> dependencies have far reaching consequences that manifest themselves for the
+> life of your application.
+
+This nails it on the head. Small dependency directions add up to determine how your
+application is laid out. This can be great or terrible depending on the direction
+and effectiveness of your dependencies.
+
+### Choosing Dependency Direction
+
+* Some classes are more likely than others to have changes in requirements
+* Concrete classes are more likely to change than abstract classes
+* Changing a class that has many dependencies *will* result in widespread consequences
+
+> The idea that some classes are more likely to change than others appliees not only
+> to the code that you write for your own application but also to the code that
+> you use but did not write.
+
+Hi Gems.
+
+> Ruby base classes always change less often than your own classes and you can
+> continue to depend on them without another thought.
+
+You shouldn't think about Ruby's overall changes as much as you should think about
+your own codes, or any external (or internal) dependenices you might have.
+
+### Recognizing Concretions and Abstractions
+
+> [Abstraction] - Merriam-Webster defines it as: "disassociated from any specific instance".
+
+> Statically typed languages have compiles that act like unit tests for types
+
+This is actually something I hadn't thought of before. While unit tests are
+very much still needed, statically typed languages help you think about what
+kind of data you're passing and how you pass it.
+
+> [In statically typed languages], it is impossible to create an abstraction
+> unknowingly or by accident; in statically typed languages defining an
+> interface is always intentional.
+
+### Avoiding Dependent-Laden Classes
+
+> A class that, if changed, will cause changes to ripple though the application,
+> will be under enormous pressure to never change.
+
+### Finding Dependencies That Matter
+
+> Classes vary in their likelihood of change, their level of abstraction, and their
+> number of dependents.
+
+> interesting design decisions occur at the place where the likelihood of change
+> intersects with number of dependents.
+
+> Depend on things that change less often less often that you do
