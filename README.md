@@ -15,9 +15,3 @@ They serve as individual README's for the concepts covered there.
 * [Chapter 2](chapter_2/chapter_2.md)
 * [Chapter 3](chapter_3/chapter_3.md)
 * [Chapter 4 - In Development](chapter_4/chapter_4.md)
-
-## New Ways To Look At examples
-
-Sandi provides a lot of really great examples along with her writing. In order
-to best understand the examples and concepts (along with my wonderful comments),
-I'll attempt to list the various commit states that these example files are at.
