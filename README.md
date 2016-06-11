@@ -13,7 +13,8 @@ They serve as individual README's for the concepts covered there.
 
 * [Chapter 1](chapter_1/chapter_1.md)
 * [Chapter 2](chapter_2/chapter_2.md)
-* [Chapter 3 - In Development](chapter_3/chapter_3.md)
+* [Chapter 3](chapter_3/chapter_3.md)
+* [Chapter 4 - In Development](chapter_4/chapter_4.md)
 
 ## New Ways To Look At examples
 

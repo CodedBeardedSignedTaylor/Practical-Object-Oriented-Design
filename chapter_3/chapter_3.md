@@ -200,17 +200,32 @@ kind of data you're passing and how you pass it.
 > unknowingly or by accident; in statically typed languages defining an
 > interface is always intentional.
 
+We're always creating abstractions, but we often forget to be aware of such actions.
+
 ### Avoiding Dependent-Laden Classes
 
 > A class that, if changed, will cause changes to ripple though the application,
 > will be under enormous pressure to never change.
+
+As a new programmer on a massive and aging project, we often don't see these
+things coming until we deal with them. However, after having a bad experience
+dealing with some of the pains of a depenency-laden edit, we find ourselves never
+wanting to change that ever again.
 
 ### Finding Dependencies That Matter
 
 > Classes vary in their likelihood of change, their level of abstraction, and their
 > number of dependents.
 
+True.
+
 > interesting design decisions occur at the place where the likelihood of change
 > intersects with number of dependents.
 
-> Depend on things that change less often less often that you do
+This is very relevant to the scheme of things. We often think of the change we want
+without considering how that change will affect different things. In very large,
+monolithic applications, its easy to *not* know how deep the dependency levels go.
+In smaller microservice applications, its easy to not know how many services will
+affected by a change.
+
+> Depend on things that change less often than you do
